@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plancha 02 - Consejo Académico UManizales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="inicio">
+      <nav class="navbar container">
+        <a class="brand" href="#inicio">
+          <span class="brand-number">02</span>
+          <span>Plancha Consejo Académico</span>
+        </a>
+        <div class="menu">
+          <a href="#candidatos">Candidatos</a>
+          <a href="#propuestas">Propuestas</a>
+          <a href="#plan">Plan de gobierno</a>
+          <a href="#vota" class="btn small">Vota 13 de marzo</a>
+        </div>
+      </nav>
+
+      <div class="hero-content container">
+        <div class="hero-text">
+          <p class="pill">Universidad de Manizales · Consejo Académico</p>
+          <h1 id="campaignName">Liderazgo y Conocimiento · Plancha 02</h1>
+          <p id="campaignSlogan" class="lead">
+            Somos la plancha estudiantil que representa ideas nuevas, participación real y decisiones académicas con visión de futuro.
+          </p>
+          <div class="cta-group">
+            <a href="#vota" class="btn">¡Vota este 13 de marzo de 2026!</a>
+            <a href="admin.html" class="btn btn-outline">Panel administrativo</a>
+          </div>
+        </div>
+        <div class="hero-logo-card">
+          <img
+            id="campaignLogo"
+            src="https://dummyimage.com/500x500/0c3b2e/f3ff5f&text=Sube+el+logo+de+Plancha+02"
+            alt="Logo Plancha 02"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="candidatos" class="section container">
+        <h2>Conoce nuestra plancha</h2>
+        <p class="section-text">Estos son los 4 candidatos que representan la fuerza de la comunidad universitaria.</p>
+        <div id="candidatesGrid" class="grid"></div>
+      </section>
+
+      <section id="propuestas" class="section alt-bg">
+        <div class="container">
+          <h2>Propuestas</h2>
+          <p class="section-text">Compromisos concretos para transformar la experiencia académica.</p>
+          <ul id="proposalsList" class="cards-list"></ul>
+        </div>
+      </section>
+
+      <section id="plan" class="section container">
+        <h2>Plan de Gobierno</h2>
+        <p id="governmentPlan" class="plan-text"></p>
+      </section>
+
+      <section id="vota" class="section vote-section">
+        <div class="container vote-card">
+          <h2>Este viernes 13 de marzo de 2026</h2>
+          <p>Tu voto decide el rumbo académico. Marca <strong>Plancha 02</strong> en el tarjetón del Consejo Académico.</p>
+          <div class="countdown" id="countdown">Cargando cuenta regresiva...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Plancha 02 · Consejo Académico · Universidad de Manizales</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
