@@ -1,4 +1,7 @@
 const STORAGE_KEY = 'plancha02-content-v1';
+const ADMIN_SESSION_KEY = 'plancha02-admin-auth';
+const ADMIN_DEFAULT_USER = 'administrador';
+const ADMIN_DEFAULT_PASS = 'campañaAcademico2026';
 
 const defaultData = {
   campaignName: 'Liderazgo y Conocimiento · Plancha 02',
@@ -55,6 +58,45 @@ const saveData = (data) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data
 const isAdminPage = document.body.classList.contains('admin-page');
 
 if (isAdminPage) {
+  const loginSection = document.getElementById('loginSection');
+  const adminSection = document.getElementById('adminSection');
+  const loginForm = document.getElementById('loginForm');
+  const loginError = document.getElementById('loginError');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  const setAdminVisibility = (isAuthenticated) => {
+    loginSection.classList.toggle('hidden', isAuthenticated);
+    adminSection.classList.toggle('hidden', !isAuthenticated);
+  };
+
+  const isAuthenticated = sessionStorage.getItem(ADMIN_SESSION_KEY) === 'ok';
+  setAdminVisibility(isAuthenticated);
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = document.getElementById('usernameInput').value.trim();
+    const password = document.getElementById('passwordInput').value;
+
+    if (username === ADMIN_DEFAULT_USER && password === ADMIN_DEFAULT_PASS) {
+      sessionStorage.setItem(ADMIN_SESSION_KEY, 'ok');
+      loginError.textContent = '';
+      setAdminVisibility(true);
+      return;
+    }
+
+    loginError.textContent = 'Credenciales incorrectas. Inténtalo de nuevo.';
+  });
+
+  logoutBtn.addEventListener('click', () => {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    setAdminVisibility(false);
+    loginForm.reset();
+  });
+
+  if (!isAuthenticated) {
+    return;
+  }
+
   const data = loadData();
   const form = document.getElementById('adminForm');
   const candidateFields = document.getElementById('candidateFields');
