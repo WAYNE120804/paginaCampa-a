@@ -23,6 +23,7 @@ Puedes subir estos archivos a Netlify, Vercel, GitHub Pages, Cloudflare Pages o 
 - Las rutas de logo y fotos apuntan a la carpeta `media/uploads/` del proyecto.
 - En `admin.html` ahora puedes usar **Seleccionar archivo** para autocompletar el nombre (tipo menú de carga).
 - Después de seleccionar, coloca/copía físicamente esa imagen dentro de `media/uploads/` para que se vea en `index.html`.
+- También puedes usar directamente imágenes descargadas (por ejemplo JPG de WhatsApp): al guardar desde el selector, se almacenan en el navegador y se muestran sin depender de copiar archivos.
 - El proyecto incluye placeholders iniciales en `media/uploads/`.
 
 ## Acceso administrador
