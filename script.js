@@ -4,32 +4,31 @@ const defaultData = {
   campaignName: 'Liderazgo y Conocimiento · Plancha 02',
   campaignSlogan:
     'Proponemos un Consejo Académico más cercano al estudiante: participativo, innovador y con resultados reales para toda la comunidad universitaria.',
-  campaignLogo:
-    'https://dummyimage.com/500x500/0c3b2e/f3ff5f&text=Sube+el+logo+de+Plancha+02',
+  campaignLogo: 'media/uploads/logo-placeholder.svg',
   candidates: [
     {
       name: 'Candidato 1',
       role: 'Principal',
       bio: 'Lidera procesos de representación estudiantil y promoción del bienestar universitario.',
-      photo: 'https://dummyimage.com/400x400/e9efe9/0c3b2e&text=Foto+1',
+      photo: 'media/uploads/candidato-1.svg',
     },
     {
       name: 'Candidato 2',
       role: 'Suplente',
       bio: 'Enfocado en fortalecer la calidad académica y el diálogo entre facultades.',
-      photo: 'https://dummyimage.com/400x400/e9efe9/0c3b2e&text=Foto+2',
+      photo: 'media/uploads/candidato-2.svg',
     },
     {
       name: 'Candidato 3',
       role: 'Principal',
       bio: 'Impulsa propuestas de innovación educativa, investigación y apoyo estudiantil.',
-      photo: 'https://dummyimage.com/400x400/e9efe9/0c3b2e&text=Foto+3',
+      photo: 'media/uploads/candidato-3.svg',
     },
     {
       name: 'Candidato 4',
       role: 'Suplente',
       bio: 'Trabaja por una universidad inclusiva, sostenible y con más oportunidades.',
-      photo: 'https://dummyimage.com/400x400/e9efe9/0c3b2e&text=Foto+4',
+      photo: 'media/uploads/candidato-4.svg',
     },
   ],
   proposals: [
@@ -66,6 +65,13 @@ if (isAdminPage) {
   document.getElementById('proposalsInput').value = data.proposals.join('\n');
   document.getElementById('governmentPlanInput').value = data.governmentPlan;
 
+  const logoFileInput = document.getElementById('campaignLogoFile');
+  logoFileInput.addEventListener('change', (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    document.getElementById('campaignLogoInput').value = `media/uploads/${file.name}`;
+  });
+
   const renderCandidateInputs = (candidates) => {
     candidateFields.innerHTML = candidates
       .map(
@@ -75,11 +81,23 @@ if (isAdminPage) {
           <label>Nombre <input type="text" data-field="name" data-index="${index}" value="${candidate.name}" required></label>
           <label>Cargo <input type="text" data-field="role" data-index="${index}" value="${candidate.role}" required></label>
           <label>Descripción <textarea data-field="bio" data-index="${index}" rows="3">${candidate.bio}</textarea></label>
-          <label>URL foto <input type="url" data-field="photo" data-index="${index}" value="${candidate.photo}"></label>
+          <label>Ruta local foto <input type="text" data-field="photo" data-index="${index}" value="${candidate.photo}"></label>
+          <label>Seleccionar foto <input type="file" data-field="photoFile" data-index="${index}" accept="image/*"></label>
+          <small class="helper-text">Selecciona la imagen para autocompletar la ruta. Guarda el archivo en <strong>media/uploads/</strong>.</small>
         </div>
       `,
       )
       .join('');
+
+    candidateFields.querySelectorAll('input[data-field="photoFile"]').forEach((input) => {
+      input.addEventListener('change', (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        const index = event.target.dataset.index;
+        const target = form.querySelector(`[data-field="photo"][data-index="${index}"]`);
+        target.value = `media/uploads/${file.name}`;
+      });
+    });
   };
 
   renderCandidateInputs(data.candidates);
@@ -96,7 +114,7 @@ if (isAdminPage) {
         bio: form.querySelector(`[data-field="bio"][data-index="${index}"]`).value.trim(),
         photo:
           form.querySelector(`[data-field="photo"][data-index="${index}"]`).value.trim() ||
-          `https://dummyimage.com/400x400/e9efe9/0c3b2e&text=Foto+${index + 1}`,
+          `media/uploads/candidato-${index + 1}.svg`,
       })),
       proposals: document
         .getElementById('proposalsInput')
@@ -107,7 +125,7 @@ if (isAdminPage) {
     };
 
     saveData(current);
-    alert('✅ Cambios guardados. Ve al sitio público para revisarlos.');
+    alert('✅ Cambios guardados. Recuerda guardar físicamente las imágenes en media/uploads/.');
   });
 
   document.getElementById('resetBtn').addEventListener('click', () => {

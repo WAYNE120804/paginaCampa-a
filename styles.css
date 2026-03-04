@@ -171,6 +171,7 @@ fieldset { border: 1px solid #c7d8c8; border-radius: .7rem; padding: 1rem; }
 legend { font-weight: 700; color: var(--green-800); }
 .candidate-fields { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem; }
 .candidate-box { background: #fff; border: 1px solid #d7e3d8; border-radius: .7rem; padding: .7rem; }
+.helper-text { display: block; margin-top: .3rem; color: #2a5a44; font-size: .82rem; }
 .admin-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
 
 @media (max-width: 900px) {

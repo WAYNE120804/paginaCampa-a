@@ -17,7 +17,9 @@
       <form id="adminForm" class="admin-form">
         <label>Nombre de campaña <input type="text" id="campaignNameInput" required /></label>
         <label>Slogan / descripción <textarea id="campaignSloganInput" rows="3" required></textarea></label>
-        <label>URL del logo <input type="url" id="campaignLogoInput" placeholder="https://..." /></label>
+        <label>Ruta local del logo <input type="text" id="campaignLogoInput" placeholder="media/uploads/logo.png" /></label>
+        <label>Seleccionar logo <input type="file" id="campaignLogoFile" accept="image/*" /></label>
+        <small class="helper-text">Selecciona una imagen para autocompletar la ruta local. Luego guarda el archivo dentro de <strong>media/uploads/</strong>.</small>
 
         <fieldset>
           <legend>Candidatos (4)</legend>
