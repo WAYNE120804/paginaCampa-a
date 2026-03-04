@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Administrativo - Plancha 02</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="container admin-wrapper">
+      <h1>Panel administrativo · Plancha 02</h1>
+      <p>Edita el contenido público sin tocar código. Los cambios se guardan en este navegador.</p>
+
+      <form id="adminForm" class="admin-form">
+        <label>Nombre de campaña <input type="text" id="campaignNameInput" required /></label>
+        <label>Slogan / descripción <textarea id="campaignSloganInput" rows="3" required></textarea></label>
+        <label>URL del logo <input type="url" id="campaignLogoInput" placeholder="https://..." /></label>
+
+        <fieldset>
+          <legend>Candidatos (4)</legend>
+          <div id="candidateFields" class="candidate-fields"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Propuestas</legend>
+          <textarea id="proposalsInput" rows="8" placeholder="Una propuesta por línea"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Plan de gobierno</legend>
+          <textarea id="governmentPlanInput" rows="8"></textarea>
+        </fieldset>
+
+        <div class="admin-actions">
+          <button type="submit" class="btn">Guardar cambios</button>
+          <button type="button" id="resetBtn" class="btn btn-outline">Restablecer valores por defecto</button>
+          <a class="btn btn-outline" href="index.html">Ver sitio público</a>
+        </div>
+      </form>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
