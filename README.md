@@ -11,11 +11,11 @@ Sitio web estático listo para publicar en GitHub + Netlify.
 
 Este repositorio no incluye fotos finales; debes subirlas tú en esta carpeta:
 
-- `media/uploads/logo-plancha-02.jpg`
-- `media/uploads/candidato-1.jpg`
-- `media/uploads/candidato-2.jpg`
-- `media/uploads/candidato-3.jpg`
-- `media/uploads/candidato-4.jpg`
+- `media/uploads/logo.jpeg`
+- `media/uploads/hector_rivera.jpeg`
+- `media/uploads/julian_zapata.jpeg`
+- `media/uploads/miguel_gomez.jpeg`
+- `media/uploads/david_piedra.jpeg`
 
 > Si cambias nombre o extensión, actualiza también la ruta en `data/content.json`.
 > Si no subes esas imágenes, la página mostrará rutas sin archivo en producción.
@@ -60,13 +60,28 @@ Si en `index.html` no aparecen las fotos, revisa:
 
 1. Que los archivos existan físicamente en `media/uploads/`.
 2. Que los nombres coincidan exactamente con `data/content.json` (mayúsculas/minúsculas importan en Netlify).
-3. Que las rutas del JSON sean relativas, por ejemplo `media/uploads/candidato-1.jpg`.
+3. Que las rutas del JSON sean relativas, por ejemplo `media/uploads/hector_rivera.jpeg`.
 4. Que no uses `.svg` si tus archivos reales son `.jpg` o `.png`.
 5. Después de subir fotos al repo, haz `git add`, `git commit`, `git push` y espera redeploy de Netlify.
 
 Rutas configuradas actualmente:
-- `media/uploads/logo-plancha-02.jpg`
-- `media/uploads/candidato-1.jpg`
-- `media/uploads/candidato-2.jpg`
-- `media/uploads/candidato-3.jpg`
-- `media/uploads/candidato-4.jpg`
+- `media/uploads/logo.jpeg`
+- `media/uploads/hector_rivera.jpeg`
+- `media/uploads/julian_zapata.jpeg`
+- `media/uploads/miguel_gomez.jpeg`
+- `media/uploads/david_piedra.jpeg`
+
+
+## Importante en local (Windows/Mac)
+
+No abras `index.html` con doble clic (`file://...`) porque el navegador bloquea la lectura de `data/content.json` y puede no mostrar cambios/fotos.
+
+Usa servidor local:
+
+```bash
+python3 -m http.server 4173
+```
+
+Luego abre:
+
+`http://localhost:4173/index.html`
