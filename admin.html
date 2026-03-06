@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Administrativo - Plancha 02</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="container admin-wrapper">
+      <section id="loginSection" class="admin-login-card">
+        <h1>Acceso administrativo · Plancha 02</h1>
+        <p>Ingresa para editar el contenido del sitio.</p>
+
+        <form id="loginForm" class="admin-form compact-form">
+          <label>Usuario <input type="text" id="usernameInput" required autocomplete="username" /></label>
+          <label>Contraseña <input type="password" id="passwordInput" required autocomplete="current-password" /></label>
+          <p id="loginError" class="error-text" aria-live="polite"></p>
+          <button type="submit" class="btn">Ingresar</button>
+        </form>
+      </section>
+
+      <section id="adminSection" class="hidden">
+        <div class="admin-header-row">
+          <div>
+            <h1>Panel administrativo · Plancha 02</h1>
+            <p>Edita el contenido público sin tocar código. Los cambios se guardan en este navegador.</p>
+          </div>
+          <button type="button" id="logoutBtn" class="btn btn-outline">Cerrar sesión</button>
+        </div>
+
+        <form id="adminForm" class="admin-form">
+          <label>Nombre de campaña <input type="text" id="campaignNameInput" required /></label>
+          <label>Slogan / descripción <textarea id="campaignSloganInput" rows="3" required></textarea></label>
+          <label>Ruta local del logo <input type="text" id="campaignLogoInput" placeholder="media/uploads/logo.png" /></label>
+          <label>Seleccionar logo <input type="file" id="campaignLogoFile" accept="image/*" /></label>
+          <small class="helper-text">Selecciona imagen para autocompletar ruta. Luego copia/pega el archivo dentro de <strong>media/uploads/</strong>.</small>
+
+          <fieldset>
+            <legend>Candidatos (4)</legend>
+            <div id="candidateFields" class="candidate-fields"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Propuestas</legend>
+            <textarea id="proposalsInput" rows="8" placeholder="Una propuesta por línea"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Plan de gobierno</legend>
+            <textarea id="governmentPlanInput" rows="8"></textarea>
+          </fieldset>
+
+          <div class="admin-actions">
+            <button type="submit" class="btn">Guardar cambios</button>
+            <button type="button" id="exportBtn" class="btn btn-outline">Generar JSON para Netlify</button>
+            <button type="button" id="resetBtn" class="btn btn-outline">Restablecer valores por defecto</button>
+            <a class="btn btn-outline" href="index.html">Ver sitio público</a>
+          </div>
+        </form>
+
+        <section class="export-section">
+          <h3>Publicación estática (Netlify)</h3>
+          <p>
+            Copia este JSON y pégalo en <code>data/content.json</code> del repositorio. Luego sube también las imágenes en
+            <code>media/uploads/</code> y haz deploy.
+          </p>
+          <textarea id="netlifyJsonOutput" rows="12" readonly placeholder="Aquí aparecerá el JSON listo para pegar en data/content.json"></textarea>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

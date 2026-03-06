@@ -1,0 +1,39 @@
+{
+  "campaignName": "Liderazgo y Conocimiento · Plancha 02",
+  "campaignSlogan": "Somos una plancha estudiantil para el Consejo Académico de la Universidad de Manizales que propone decisiones con transparencia, participación real y resultados medibles para toda la comunidad universitaria.",
+  "campaignLogo": "media/uploads/logo-plancha-02.jpg",
+  "candidates": [
+    {
+      "name": "Nombre Candidato 1",
+      "role": "Principal",
+      "bio": "Representante estudiantil con enfoque en calidad académica, bienestar y seguimiento de compromisos.",
+      "photo": "media/uploads/candidato-1.jpg"
+    },
+    {
+      "name": "Nombre Candidato 2",
+      "role": "Suplente",
+      "bio": "Impulsa procesos de participación por facultades y propone mejoras en rutas de atención estudiantil.",
+      "photo": "media/uploads/candidato-2.jpg"
+    },
+    {
+      "name": "Nombre Candidato 3",
+      "role": "Principal",
+      "bio": "Trabaja por la innovación académica, fortalecimiento de semilleros y oportunidades de investigación.",
+      "photo": "media/uploads/candidato-3.jpg"
+    },
+    {
+      "name": "Nombre Candidato 4",
+      "role": "Suplente",
+      "bio": "Promueve inclusión, salud mental y articulación entre estudiantes, docentes y órganos de gobierno.",
+      "photo": "media/uploads/candidato-4.jpg"
+    }
+  ],
+  "proposals": [
+    "Asambleas mensuales abiertas por facultad con actas públicas y seguimiento de avances.",
+    "Plan de acompañamiento académico y psicosocial para prevenir deserción y rezago.",
+    "Agenda semestral de bienestar universitario (salud mental, deporte, cultura y permanencia).",
+    "Portal de transparencia académica con cronograma y estado de decisiones del Consejo.",
+    "Fortalecimiento de semilleros, monitorías y convocatorias de movilidad e investigación."
+  ],
+  "governmentPlan": "Eje 1 · Participación: mesas de diálogo por programa y rendición de cuentas periódica.\nEje 2 · Calidad: propuestas para actualización curricular, evaluación justa y apoyo a prácticas.\nEje 3 · Bienestar: acciones concretas en salud mental, permanencia y apoyo socioeconómico.\nEje 4 · Innovación: digitalización de trámites académicos y mejor comunicación institucional.\nEje 5 · Seguimiento: indicadores trimestrales para medir cumplimiento del plan de gobierno."
+}
