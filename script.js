@@ -5,50 +5,45 @@ const ADMIN_DEFAULT_USER = 'administrador';
 const ADMIN_DEFAULT_PASS = 'campañaAcademico2026';
 
 const defaultData = {
-  campaignName: 'Fuerza Académica · Plancha 02',
+  campaignName: 'Liderazgo y Conocimiento · Plancha 02',
   campaignSlogan:
-    'roponemos un Consejo Académico que se construya a partir de tres principios fundamentales: innovar, prevenir y escuchar. queremos una universidad  que sea capaz de anticipar los desafíos académicos personales y generales , promover nuevas formas de aprendizaje, investigación y procesos  fortaleciendo los espacios de participación estudiantil dentro de la comunidad universitaria. . Nuestro objetivo es impulsar una gestión académica más cercana, moderna y participativa, que contribuya al fortalecimiento de la calidad educativa y a una mejor experiencia universitaria para todos.',
+    'Somos una plancha estudiantil para el Consejo Académico de la Universidad de Manizales que propone decisiones con transparencia, participación real y resultados medibles para toda la comunidad universitaria.',
   campaignLogo: 'media/uploads/logo-plancha-02.jpg',
   candidates: [
     {
-      name: 'Héctor Fabio Rivera Castaño',
+      name: 'Nombre Candidato 1',
       role: 'Principal',
-      bio: 'es estudiante de Derecho y actual edil de la Comuna San José. se a formado en el análisis jurídico y en el servicio a la comunidad. Aspira al Consejo Académico para fortalecer la voz estudiantil. Quiere impulsar mejoras reales para la modalidad virtual. Representar es escuchar, estructurar y transformar..',
-      photo: 'media/uploads/hector_rivera.jpg',
+      bio: 'Lidera procesos de representación estudiantil y promoción del bienestar universitario.',
+      photo: 'media/uploads/candidato-1.jpg',
     },
     {
-      name: 'Juan Miguel Gómez Molina',
+      name: 'Nombre Candidato 2',
       role: 'Suplente',
-      bio: 'Él es Estudiante de ingeniería de sistemas , es un hombre que disfruta viajar, el billa, estar con sus amigos y los videojuegos, es una persona que firme mente cree que cada persona tiene una perspectiva distinta , de lo cual se puede aprender de ellas , es alguien con mucha energía y creatividad, siempre esta dispuesto a ayudar a los demás.',
-      photo: 'paginaCampa-a\\media\\uploads\\miguel_gomez.jpeg',
+      bio: 'Enfocado en fortalecer la calidad académica y el diálogo entre facultades.',
+      photo: 'media/uploads/candidato-2.jpg',
     },
     {
-      name: 'Edna Juliana Zapata Ocampo',
+      name: 'Nombre Candidato 3',
       role: 'Principal',
-      bio: 'Ella es Juliana Zapata Estudiante de Psicología, es una mujer que cree que siempre es un buen momento para empezar, es una persona que confía en la justicia la disciplina y el amor, es una mamá enamorada de la vida, de sus dos hijos y de la academia. le encantan los libros, la conecta escribir, y sobre todo le apasiona aprender',
-      photo: 'paginaCampa-a\\media\\uploads\\julian_zapata.jpeg',
+      bio: 'Impulsa propuestas de innovación educativa, investigación y apoyo estudiantil.',
+      photo: 'media/uploads/candidato-3.jpg',
     },
     {
-      name: 'Jesus David Castro Piedra',
+      name: 'Nombre Candidato 4',
       role: 'Suplente',
-      bio: 'Él es un Estudiante de medicina, un hombre que disfruta el voleibol, los videojuegos, es una persona que le pone el alma a lo que hace, un convencido de que hay que divertirse haciendo lo que nos apasiona. Sus habilidades como líder las ha construido a lo largo de los años y es algo que lo acompaña donde va. Le gusta trabajar siempre en pro del bienestar de los demás y asegurarse que todos estén bien.',
-      photo: 'paginaCampa-a\\media\\uploads\\david_piedra.jpeg',
+      bio: 'Trabaja por una universidad inclusiva, sostenible y con más oportunidades.',
+      photo: 'media/uploads/candidato-4.jpg',
     },
   ],
   proposals: [
-    'Sistema de alertas académicas tempranas que identifique estudiantes en riesgo mediante indicadores como inasistencias y bajo rendimiento, activando tutorías preventivas y acompañamiento académico.',
-    'Creación de un banco de electivas abiertas entre facultades y actualización curricular con cursos intersemestrales y formación en áreas emergentes como inteligencia artificial y habilidades para la vida.',
-    'Creación de un observatorio académico estudiantil que analice datos institucionales, identifique problemáticas estructurales y genere informes para mejorar la toma de decisiones académicas.',
-    'Fortalecimiento de los semilleros de investigación mediante articulación entre facultades, créditos académicos, incentivos, publicaciones estudiantiles y convocatorias de proyectos interdisciplinarios.',
-    'Actualización de los sistemas de evaluación de estudiantes y docentes con instrumentos más claros, mayor retroalimentación y enfoques formativos que mejoren el aprendizaje.',
-    'Promoción de la internacionalización académica mediante clases espejo, proyectos virtuales con universidades extranjeras y seminarios internacionales accesibles para más estudiantes.',
-    'Sistema institucional de reconocimiento a la innovación, investigación e impacto social de los proyectos estudiantiles por facultades.',
-    'Creación de nuevos espacios de comunicación y retroalimentación entre estudiantes y autoridades académicas, tanto presenciales como virtuales.',
-    'Validación académica de experiencias laborales o prácticas profesionales en los últimos semestres con supervisión de docentes tutores.',
-    'Programa de desarrollo de talentos académicos que permita a estudiantes destacados adelantar materias, participar en investigación, ser monitores y cursar asignaturas de posgrado.'
+    'Asambleas mensuales abiertas por facultad con actas públicas y seguimiento de avances.',
+    'Plan de acompañamiento académico y psicosocial para prevenir deserción y rezago.',
+    'Agenda semestral de bienestar universitario (salud mental, deporte, cultura y permanencia).',
+    'Portal de transparencia académica con cronograma y estado de decisiones del Consejo.',
+    'Fortalecimiento de semilleros, monitorías y convocatorias de movilidad e investigación.',
   ],
   governmentPlan:
-    'Participación: mesas de diálogo por programa, espacios abiertos de deliberación y rendición de cuentas periódica a la comunidad universitaria.\nCalidad: actualización curricular permanente, sistemas de evaluación más justos y fortalecimiento de prácticas académicas y profesionales.\nBienestar: acciones integrales en salud mental, estrategias de permanencia estudiantil y programas de apoyo socioeconómico.\nInnovación: impulso a la digitalización de trámites académicos, modernización de procesos y mejora en los canales de comunicación institucional.\nSeguimiento: implementación de indicadores trimestrales y mecanismos de evaluación para medir el cumplimiento del plan de gobierno.'
+    'Eje 1 · Participación: mesas de diálogo por programa y rendición de cuentas periódica.\nEje 2 · Calidad: propuestas para actualización curricular, evaluación justa y apoyo a prácticas.\nEje 3 · Bienestar: acciones concretas en salud mental, permanencia y apoyo socioeconómico.\nEje 4 · Innovación: digitalización de trámites académicos y mejor comunicación institucional.\nEje 5 · Seguimiento: indicadores trimestrales para medir cumplimiento del plan de gobierno.',
 };
 
 const saveData = (data) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -66,7 +61,7 @@ const loadBaseData = async () => {
   }
 };
 
-const loadEditableData = async () => {
+const loadAdminEditableData = async () => {
   const base = await loadBaseData();
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -75,6 +70,8 @@ const loadEditableData = async () => {
     return base;
   }
 };
+
+const loadPublicData = async () => loadBaseData();
 
 const isAdminPage = document.body.classList.contains('admin-page');
 
@@ -97,7 +94,7 @@ if (isAdminPage) {
     if (adminInitialized) return;
     adminInitialized = true;
 
-    const data = await loadEditableData();
+    const data = await loadAdminEditableData();
     const form = document.getElementById('adminForm');
     const candidateFields = document.getElementById('candidateFields');
     const netlifyJsonOutput = document.getElementById('netlifyJsonOutput');
@@ -219,7 +216,7 @@ if (isAdminPage) {
     loginForm.reset();
   });
 } else {
-  loadEditableData().then((data) => {
+  loadPublicData().then((data) => {
     document.getElementById('campaignName').textContent = data.campaignName;
     document.getElementById('campaignSlogan').textContent = data.campaignSlogan;
     document.getElementById('campaignLogo').src = data.campaignLogo;

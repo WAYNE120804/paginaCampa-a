@@ -45,3 +45,10 @@ Para que cambios se publiquen siempre debes dejar la versión final en `data/con
 
 - Usuario por defecto: `administrador`
 - Clave por defecto: `campañaAcademico2026`
+
+## Si index.html no se actualiza
+
+- `index.html` en producción ahora lee **solo** `data/content.json`.
+- Si editaste `script.js` o `data/content.json`, asegúrate de hacer commit/push y esperar redeploy de Netlify.
+- `localStorage` del admin ya no pisa el contenido público en `index.html`; solo se usa para previsualización en `admin.html`.
+- Verifica que las rutas de imágenes del JSON existan realmente en `media/uploads/`.
