@@ -1,34 +1,47 @@
 # Página campaña Plancha 02 · Consejo Académico UManizales
 
-Sitio web estático con dos vistas:
+Sitio web estático listo para publicar en GitHub + Netlify.
 
-- `index.html`: página pública de campaña.
-- `admin.html`: panel administrativo para editar contenido sin tocar código (usa `localStorage`).
+## Archivos clave que debes editar en código
 
-## Despliegue rápido
+- `data/content.json` → aquí va **todo el texto oficial** de la campaña (nombre, slogan, candidatos, propuestas y plan de gobierno).
+- `media/uploads/` → aquí van **todas las fotos** y el logo.
 
-Puedes subir estos archivos a Netlify, Vercel, GitHub Pages, Cloudflare Pages o cualquier hosting estático.
+## Ruta y nombres recomendados para fotos
 
-## Edición de contenido
+Este repositorio no incluye fotos finales; debes subirlas tú en esta carpeta:
 
-1. Abre `admin.html` en el navegador.
-2. Cambia textos, logo, candidatos y propuestas.
-3. Guarda.
-4. Revisa `index.html`.
+- `media/uploads/logo-plancha-02.jpg`
+- `media/uploads/candidato-1.jpg`
+- `media/uploads/candidato-2.jpg`
+- `media/uploads/candidato-3.jpg`
+- `media/uploads/candidato-4.jpg`
 
-> Nota: los cambios se guardan en el navegador/dispositivo donde se edita. Si quieres un panel multiusuario en línea con base de datos, se puede conectar después con Supabase/Firebase/Strapi.
+> Si cambias nombre o extensión, actualiza también la ruta en `data/content.json`.
+> Si no subes esas imágenes, la página mostrará rutas sin archivo en producción.
 
-## Imágenes locales (nueva configuración)
+## Dónde pegar el texto para publicar en Netlify
 
-- Las rutas de logo y fotos apuntan a la carpeta `media/uploads/` del proyecto.
-- En `admin.html` ahora puedes usar **Seleccionar archivo** para autocompletar el nombre (tipo menú de carga).
-- Después de seleccionar, coloca/copía físicamente esa imagen dentro de `media/uploads/` para que se vea en `index.html`.
-- También puedes usar directamente imágenes descargadas (por ejemplo JPG de WhatsApp): al guardar desde el selector, se almacenan en el navegador y se muestran sin depender de copiar archivos.
-- El proyecto incluye placeholders iniciales en `media/uploads/`.
+Pega el contenido final de campaña en:
+
+- **`data/content.json`**
+
+Este archivo es el que usa el sitio público en producción estática.
+
+## Flujo exacto (local → GitHub → Netlify)
+
+1. Edita `data/content.json` con el texto final de la campaña.
+2. Copia las fotos/logo a `media/uploads/` con los nombres indicados.
+3. Abre `index.html` local para validar visualmente.
+4. Haz `git add .`, `git commit` y `git push` al repositorio.
+5. Netlify detecta el push y despliega automáticamente.
+
+## Nota sobre admin.html
+
+`admin.html` sirve para editar y previsualizar localmente, pero en hosting estático no escribe archivos del repo.
+Para que cambios se publiquen siempre debes dejar la versión final en `data/content.json` y en `media/uploads/`.
 
 ## Acceso administrador
 
 - Usuario por defecto: `administrador`
 - Clave por defecto: `campañaAcademico2026`
-
-> La sesión se conserva en el navegador hasta cerrar sesión desde el botón **Cerrar sesión**.

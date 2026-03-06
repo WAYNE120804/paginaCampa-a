@@ -37,7 +37,7 @@
           <label>Slogan / descripción <textarea id="campaignSloganInput" rows="3" required></textarea></label>
           <label>Ruta local del logo <input type="text" id="campaignLogoInput" placeholder="media/uploads/logo.png" /></label>
           <label>Seleccionar logo <input type="file" id="campaignLogoFile" accept="image/*" /></label>
-          <small class="helper-text">Selecciona una imagen para autocompletar la ruta local. Luego guarda el archivo dentro de <strong>media/uploads/</strong>.</small>
+          <small class="helper-text">Selecciona imagen para autocompletar ruta. Luego copia/pega el archivo dentro de <strong>media/uploads/</strong>.</small>
 
           <fieldset>
             <legend>Candidatos (4)</legend>
@@ -56,10 +56,20 @@
 
           <div class="admin-actions">
             <button type="submit" class="btn">Guardar cambios</button>
+            <button type="button" id="exportBtn" class="btn btn-outline">Generar JSON para Netlify</button>
             <button type="button" id="resetBtn" class="btn btn-outline">Restablecer valores por defecto</button>
             <a class="btn btn-outline" href="index.html">Ver sitio público</a>
           </div>
         </form>
+
+        <section class="export-section">
+          <h3>Publicación estática (Netlify)</h3>
+          <p>
+            Copia este JSON y pégalo en <code>data/content.json</code> del repositorio. Luego sube también las imágenes en
+            <code>media/uploads/</code> y haz deploy.
+          </p>
+          <textarea id="netlifyJsonOutput" rows="12" readonly placeholder="Aquí aparecerá el JSON listo para pegar en data/content.json"></textarea>
+        </section>
       </section>
     </main>
 

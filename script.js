@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'plancha02-content-v1';
+const CONTENT_FILE = 'data/content.json';
 const ADMIN_SESSION_KEY = 'plancha02-admin-auth';
 const ADMIN_DEFAULT_USER = 'administrador';
 const ADMIN_DEFAULT_PASS = 'campañaAcademico2026';
@@ -6,64 +7,73 @@ const ADMIN_DEFAULT_PASS = 'campañaAcademico2026';
 const defaultData = {
   campaignName: 'Liderazgo y Conocimiento · Plancha 02',
   campaignSlogan:
-    'Proponemos un Consejo Académico más cercano al estudiante: participativo, innovador y con resultados reales para toda la comunidad universitaria.',
-  campaignLogo: 'media/uploads/logo-placeholder.svg',
+    'Somos una plancha estudiantil para el Consejo Académico de la Universidad de Manizales que propone decisiones con transparencia, participación real y resultados medibles para toda la comunidad universitaria.',
+  campaignLogo: 'media/uploads/logo-plancha-02.jpg',
   candidates: [
     {
-      name: 'Candidato 1',
+      name: 'Nombre Candidato 1',
       role: 'Principal',
       bio: 'Lidera procesos de representación estudiantil y promoción del bienestar universitario.',
-      photo: 'media/uploads/candidato-1.svg',
+      photo: 'media/uploads/candidato-1.jpg',
     },
     {
-      name: 'Candidato 2',
+      name: 'Nombre Candidato 2',
       role: 'Suplente',
       bio: 'Enfocado en fortalecer la calidad académica y el diálogo entre facultades.',
-      photo: 'media/uploads/candidato-2.svg',
+      photo: 'media/uploads/candidato-2.jpg',
     },
     {
-      name: 'Candidato 3',
+      name: 'Nombre Candidato 3',
       role: 'Principal',
       bio: 'Impulsa propuestas de innovación educativa, investigación y apoyo estudiantil.',
-      photo: 'media/uploads/candidato-3.svg',
+      photo: 'media/uploads/candidato-3.jpg',
     },
     {
-      name: 'Candidato 4',
+      name: 'Nombre Candidato 4',
       role: 'Suplente',
       bio: 'Trabaja por una universidad inclusiva, sostenible y con más oportunidades.',
-      photo: 'media/uploads/candidato-4.svg',
+      photo: 'media/uploads/candidato-4.jpg',
     },
   ],
   proposals: [
-    'Mesa mensual abierta con estudiantes para seguimiento de compromisos.',
-    'Ruta de acompañamiento académico y mental para prevenir deserción.',
-    'Fortalecimiento de semilleros de investigación y movilidad académica.',
-    'Digitalización de trámites académicos y mayor transparencia en decisiones.',
+    'Asambleas mensuales abiertas por facultad con actas públicas y seguimiento de avances.',
+    'Plan de acompañamiento académico y psicosocial para prevenir deserción y rezago.',
+    'Agenda semestral de bienestar universitario (salud mental, deporte, cultura y permanencia).',
+    'Portal de transparencia académica con cronograma y estado de decisiones del Consejo.',
+    'Fortalecimiento de semilleros, monitorías y convocatorias de movilidad e investigación.',
   ],
   governmentPlan:
-    '1) Participación activa: abrir canales permanentes de consulta y rendición de cuentas.\n2) Calidad académica: defender mejoras curriculares y apoyo a docentes y estudiantes.\n3) Bienestar integral: priorizar salud mental, cultura y deporte como ejes del éxito académico.\n4) Innovación institucional: promover herramientas tecnológicas y procesos ágiles.',
+    'Eje 1 · Participación: mesas de diálogo por programa y rendición de cuentas periódica.\nEje 2 · Calidad: propuestas para actualización curricular, evaluación justa y apoyo a prácticas.\nEje 3 · Bienestar: acciones concretas en salud mental, permanencia y apoyo socioeconómico.\nEje 4 · Innovación: digitalización de trámites académicos y mejor comunicación institucional.\nEje 5 · Seguimiento: indicadores trimestrales para medir cumplimiento del plan de gobierno.',
 };
 
-const loadData = () => {
+const saveData = (data) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+const mergeData = (base, override) => ({ ...base, ...override });
+
+const loadBaseData = async () => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? { ...defaultData, ...JSON.parse(raw) } : defaultData;
+    const res = await fetch(CONTENT_FILE, { cache: 'no-store' });
+    if (!res.ok) throw new Error('No se pudo leer content.json');
+    const json = await res.json();
+    return mergeData(defaultData, json);
   } catch {
     return defaultData;
   }
 };
 
-const saveData = (data) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-
-const readFileAsDataURL = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error('No se pudo leer el archivo.'));
-    reader.readAsDataURL(file);
-  });
+const loadEditableData = async () => {
+  const base = await loadBaseData();
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? mergeData(base, JSON.parse(raw)) : base;
+  } catch {
+    return base;
+  }
+};
 
 const isAdminPage = document.body.classList.contains('admin-page');
+
+const exportJsonForNetlify = (data) => JSON.stringify(data, null, 2);
 
 if (isAdminPage) {
   const loginSection = document.getElementById('loginSection');
@@ -71,24 +81,21 @@ if (isAdminPage) {
   const loginForm = document.getElementById('loginForm');
   const loginError = document.getElementById('loginError');
   const logoutBtn = document.getElementById('logoutBtn');
+  let adminInitialized = false;
 
   const setAdminVisibility = (isAuthenticated) => {
     loginSection.classList.toggle('hidden', isAuthenticated);
     adminSection.classList.toggle('hidden', !isAuthenticated);
   };
 
-  let adminInitialized = false;
-
-  const initializeAdminPanel = () => {
+  const initializeAdminPanel = async () => {
     if (adminInitialized) return;
     adminInitialized = true;
-    const data = loadData();
+
+    const data = await loadEditableData();
     const form = document.getElementById('adminForm');
     const candidateFields = document.getElementById('candidateFields');
-    const selectedAssets = {
-      logoDataUrl: null,
-      candidateDataUrl: {},
-    };
+    const netlifyJsonOutput = document.getElementById('netlifyJsonOutput');
 
     document.getElementById('campaignNameInput').value = data.campaignName;
     document.getElementById('campaignSloganInput').value = data.campaignSlogan;
@@ -97,11 +104,10 @@ if (isAdminPage) {
     document.getElementById('governmentPlanInput').value = data.governmentPlan;
 
     const logoFileInput = document.getElementById('campaignLogoFile');
-    logoFileInput.addEventListener('change', async (event) => {
+    logoFileInput.addEventListener('change', (event) => {
       const file = event.target.files?.[0];
       if (!file) return;
       document.getElementById('campaignLogoInput').value = `media/uploads/${file.name}`;
-      selectedAssets.logoDataUrl = await readFileAsDataURL(file);
     });
 
     const renderCandidateInputs = (candidates) => {
@@ -115,58 +121,66 @@ if (isAdminPage) {
             <label>Descripción <textarea data-field="bio" data-index="${index}" rows="3">${candidate.bio}</textarea></label>
             <label>Ruta local foto <input type="text" data-field="photo" data-index="${index}" value="${candidate.photo}"></label>
             <label>Seleccionar foto <input type="file" data-field="photoFile" data-index="${index}" accept="image/*"></label>
-            <small class="helper-text">Si seleccionas imagen (ej. JPG de WhatsApp), quedará guardada en este navegador y también se autocompleta la ruta local.</small>
+            <small class="helper-text">Selecciona la imagen para autocompletar ruta. Coloca el archivo físico en <strong>media/uploads/</strong>.</small>
           </div>
         `,
         )
         .join('');
 
       candidateFields.querySelectorAll('input[data-field="photoFile"]').forEach((input) => {
-        input.addEventListener('change', async (event) => {
+        input.addEventListener('change', (event) => {
           const file = event.target.files?.[0];
           if (!file) return;
           const index = event.target.dataset.index;
           const target = form.querySelector(`[data-field="photo"][data-index="${index}"]`);
           target.value = `media/uploads/${file.name}`;
-          selectedAssets.candidateDataUrl[index] = await readFileAsDataURL(file);
         });
       });
     };
 
     renderCandidateInputs(data.candidates);
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const current = {
-        campaignName: document.getElementById('campaignNameInput').value.trim(),
-        campaignSlogan: document.getElementById('campaignSloganInput').value.trim(),
-        campaignLogo:
-          selectedAssets.logoDataUrl ||
-          document.getElementById('campaignLogoInput').value.trim() ||
-          defaultData.campaignLogo,
-        candidates: data.candidates.map((_, index) => ({
-          name: form.querySelector(`[data-field="name"][data-index="${index}"]`).value.trim(),
-          role: form.querySelector(`[data-field="role"][data-index="${index}"]`).value.trim(),
-          bio: form.querySelector(`[data-field="bio"][data-index="${index}"]`).value.trim(),
-          photo:
-            selectedAssets.candidateDataUrl[index] ||
-            form.querySelector(`[data-field="photo"][data-index="${index}"]`).value.trim() ||
-            `media/uploads/candidato-${index + 1}.svg`,
-        })),
-        proposals: document
-          .getElementById('proposalsInput')
-          .value.split('\n')
-          .map((item) => item.trim())
-          .filter(Boolean),
-        governmentPlan: document.getElementById('governmentPlanInput').value.trim(),
-      };
-
-      saveData(current);
-      alert('✅ Cambios guardados. Si usaste selector de archivos, la imagen queda almacenada en este navegador.');
+    const collectFormData = () => ({
+      campaignName: document.getElementById('campaignNameInput').value.trim(),
+      campaignSlogan: document.getElementById('campaignSloganInput').value.trim(),
+      campaignLogo: document.getElementById('campaignLogoInput').value.trim() || defaultData.campaignLogo,
+      candidates: data.candidates.map((_, index) => ({
+        name: form.querySelector(`[data-field="name"][data-index="${index}"]`).value.trim(),
+        role: form.querySelector(`[data-field="role"][data-index="${index}"]`).value.trim(),
+        bio: form.querySelector(`[data-field="bio"][data-index="${index}"]`).value.trim(),
+        photo:
+          form.querySelector(`[data-field="photo"][data-index="${index}"]`).value.trim() ||
+          `media/uploads/candidato-${index + 1}.jpg`,
+      })),
+      proposals: document
+        .getElementById('proposalsInput')
+        .value.split('\n')
+        .map((item) => item.trim())
+        .filter(Boolean),
+      governmentPlan: document.getElementById('governmentPlanInput').value.trim(),
     });
 
-    document.getElementById('resetBtn').addEventListener('click', () => {
+    netlifyJsonOutput.value = exportJsonForNetlify(collectFormData());
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const current = collectFormData();
+      saveData(current);
+      netlifyJsonOutput.value = exportJsonForNetlify(current);
+      alert('✅ Cambios guardados en este navegador. Para Netlify pega el JSON en data/content.json.');
+    });
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const current = collectFormData();
+      netlifyJsonOutput.value = exportJsonForNetlify(current);
+      netlifyJsonOutput.focus();
+      netlifyJsonOutput.select();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', async () => {
       localStorage.removeItem(STORAGE_KEY);
+      const baseData = await loadBaseData();
+      saveData(baseData);
       location.reload();
     });
   };
@@ -200,29 +214,29 @@ if (isAdminPage) {
     loginForm.reset();
   });
 } else {
-  const data = loadData();
+  loadEditableData().then((data) => {
+    document.getElementById('campaignName').textContent = data.campaignName;
+    document.getElementById('campaignSlogan').textContent = data.campaignSlogan;
+    document.getElementById('campaignLogo').src = data.campaignLogo;
 
-  document.getElementById('campaignName').textContent = data.campaignName;
-  document.getElementById('campaignSlogan').textContent = data.campaignSlogan;
-  document.getElementById('campaignLogo').src = data.campaignLogo;
+    document.getElementById('candidatesGrid').innerHTML = data.candidates
+      .map(
+        (candidate) => `
+      <article class="card">
+        <img src="${candidate.photo}" alt="${candidate.name}">
+        <div class="card-content">
+          <h3>${candidate.name}</h3>
+          <p><strong>${candidate.role}</strong></p>
+          <p>${candidate.bio}</p>
+        </div>
+      </article>
+    `,
+      )
+      .join('');
 
-  document.getElementById('candidatesGrid').innerHTML = data.candidates
-    .map(
-      (candidate) => `
-    <article class="card">
-      <img src="${candidate.photo}" alt="${candidate.name}">
-      <div class="card-content">
-        <h3>${candidate.name}</h3>
-        <p><strong>${candidate.role}</strong></p>
-        <p>${candidate.bio}</p>
-      </div>
-    </article>
-  `,
-    )
-    .join('');
-
-  document.getElementById('proposalsList').innerHTML = data.proposals.map((proposal) => `<li>${proposal}</li>`).join('');
-  document.getElementById('governmentPlan').textContent = data.governmentPlan;
+    document.getElementById('proposalsList').innerHTML = data.proposals.map((proposal) => `<li>${proposal}</li>`).join('');
+    document.getElementById('governmentPlan').textContent = data.governmentPlan;
+  });
 
   const targetDate = new Date('2026-03-13T08:00:00-05:00').getTime();
   const countdown = document.getElementById('countdown');
