@@ -1,10 +1,8 @@
 # Carpeta de imágenes de campaña
 
-Esta carpeta se deja **vacía a propósito** para que subas tus imágenes finales.
+Sube aquí tus imágenes reales (no SVG de ejemplo).
 
-## Rutas que usa el sitio
-
-Sube tus archivos con estos nombres (recomendado):
+## Nombres/rutas que usa el sitio
 
 - `media/uploads/logo-plancha-02.jpg`
 - `media/uploads/candidato-1.jpg`
@@ -12,4 +10,6 @@ Sube tus archivos con estos nombres (recomendado):
 - `media/uploads/candidato-3.jpg`
 - `media/uploads/candidato-4.jpg`
 
-Si usas otros nombres o extensiones, actualiza también `data/content.json` en los campos `campaignLogo` y `candidates[].photo`.
+Si decides usar otro nombre o extensión (`.png`, `.jpeg`, `.webp`), debes actualizar `data/content.json` en:
+- `campaignLogo`
+- `candidates[0..3].photo`

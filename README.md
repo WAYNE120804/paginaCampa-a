@@ -52,3 +52,21 @@ Para que cambios se publiquen siempre debes dejar la versión final en `data/con
 - Si editaste `script.js` o `data/content.json`, asegúrate de hacer commit/push y esperar redeploy de Netlify.
 - `localStorage` del admin ya no pisa el contenido público en `index.html`; solo se usa para previsualización en `admin.html`.
 - Verifica que las rutas de imágenes del JSON existan realmente en `media/uploads/`.
+
+
+## Problema común: no cargan las fotos
+
+Si en `index.html` no aparecen las fotos, revisa:
+
+1. Que los archivos existan físicamente en `media/uploads/`.
+2. Que los nombres coincidan exactamente con `data/content.json` (mayúsculas/minúsculas importan en Netlify).
+3. Que las rutas del JSON sean relativas, por ejemplo `media/uploads/candidato-1.jpg`.
+4. Que no uses `.svg` si tus archivos reales son `.jpg` o `.png`.
+5. Después de subir fotos al repo, haz `git add`, `git commit`, `git push` y espera redeploy de Netlify.
+
+Rutas configuradas actualmente:
+- `media/uploads/logo-plancha-02.jpg`
+- `media/uploads/candidato-1.jpg`
+- `media/uploads/candidato-2.jpg`
+- `media/uploads/candidato-3.jpg`
+- `media/uploads/candidato-4.jpg`

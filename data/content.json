@@ -1,39 +1,44 @@
 {
-  "campaignName": "Liderazgo y Conocimiento · Plancha 02",
-  "campaignSlogan": "Somos una plancha estudiantil para el Consejo Académico de la Universidad de Manizales que propone decisiones con transparencia, participación real y resultados medibles para toda la comunidad universitaria.",
+  "campaignName": "Fuerza Académica · Plancha 02",
+  "campaignSlogan": "Proponemos un Consejo Académico que se construya a partir de tres principios fundamentales: innovar, prevenir y escuchar. Queremos una universidad que sea capaz de anticipar los desafíos académicos personales y generales, promover nuevas formas de aprendizaje, investigación y procesos fortaleciendo los espacios de participación estudiantil dentro de la comunidad universitaria. Nuestro objetivo es impulsar una gestión académica más cercana, moderna y participativa, que contribuya al fortalecimiento de la calidad educativa y a una mejor experiencia universitaria para todos.",
   "campaignLogo": "media/uploads/logo-plancha-02.jpg",
   "candidates": [
     {
-      "name": "Nombre Candidato 1",
+      "name": "Héctor Fabio Rivera Castaño",
       "role": "Principal",
-      "bio": "Representante estudiantil con enfoque en calidad académica, bienestar y seguimiento de compromisos.",
+      "bio": "Es estudiante de Derecho y actual edil de la Comuna San José. Se ha formado en el análisis jurídico y en el servicio a la comunidad. Aspira al Consejo Académico para fortalecer la voz estudiantil. Quiere impulsar mejoras reales para la modalidad virtual. Representar es escuchar, estructurar y transformar.",
       "photo": "media/uploads/candidato-1.jpg"
     },
     {
-      "name": "Nombre Candidato 2",
-      "role": "Suplente",
-      "bio": "Impulsa procesos de participación por facultades y propone mejoras en rutas de atención estudiantil.",
+      "name": "Edna Juliana Zapata Ocampo",
+      "role": "Principal",
+      "bio": "Ella es Juliana Zapata, estudiante de Psicología. Es una mujer que cree que siempre es un buen momento para empezar, una persona que confía en la justicia, la disciplina y el amor. Es una mamá enamorada de la vida, de sus dos hijos y de la academia. Le encantan los libros, la conecta escribir y sobre todo le apasiona aprender.",
       "photo": "media/uploads/candidato-2.jpg"
     },
     {
-      "name": "Nombre Candidato 3",
-      "role": "Principal",
-      "bio": "Trabaja por la innovación académica, fortalecimiento de semilleros y oportunidades de investigación.",
+      "name": "Juan Miguel Gómez Molina",
+      "role": "Suplente",
+      "bio": "Es estudiante de Ingeniería de Sistemas. Disfruta viajar, el billar, estar con sus amigos y los videojuegos. Cree firmemente que cada persona tiene una perspectiva distinta de la cual se puede aprender. Es alguien con mucha energía y creatividad, y siempre está dispuesto a ayudar a los demás.",
       "photo": "media/uploads/candidato-3.jpg"
     },
     {
-      "name": "Nombre Candidato 4",
+      "name": "Jesus David Castro Piedra",
       "role": "Suplente",
-      "bio": "Promueve inclusión, salud mental y articulación entre estudiantes, docentes y órganos de gobierno.",
+      "bio": "Es estudiante de Medicina. Disfruta el voleibol y los videojuegos. Es una persona que le pone el alma a lo que hace, convencido de que hay que divertirse haciendo lo que nos apasiona. Sus habilidades como líder las ha construido a lo largo de los años y lo acompañan donde va. Le gusta trabajar siempre en pro del bienestar de los demás y asegurarse de que todos estén bien.",
       "photo": "media/uploads/candidato-4.jpg"
     }
   ],
   "proposals": [
-    "Asambleas mensuales abiertas por facultad con actas públicas y seguimiento de avances.",
-    "Plan de acompañamiento académico y psicosocial para prevenir deserción y rezago.",
-    "Agenda semestral de bienestar universitario (salud mental, deporte, cultura y permanencia).",
-    "Portal de transparencia académica con cronograma y estado de decisiones del Consejo.",
-    "Fortalecimiento de semilleros, monitorías y convocatorias de movilidad e investigación."
+    "Sistema de Alertas Académicas Tempranas: Crear un sistema que identifique estudiantes en riesgo académico mediante indicadores como inasistencias y bajo rendimiento, activando alertas, tutorías preventivas y acompañamiento para reducir la deserción.",
+    "Banco de Electivas Abiertas y Actualización Curricular: Modernizar los planes de estudio mediante una comisión académica que promueva electivas entre facultades, cursos intersemestrales y formación en áreas emergentes como inteligencia artificial y habilidades para la vida.",
+    "Observatorio Académico Estudiantil: Crear un observatorio que analice datos académicos, identifique problemáticas estructurales y emita informes y recomendaciones para mejorar la toma de decisiones en la universidad.",
+    "Semillero 2.0: Fortalecer los semilleros de investigación con articulación entre facultades, créditos académicos, incentivos, publicaciones estudiantiles y convocatorias de proyectos interdisciplinarios.",
+    "Una Nueva Forma de Evaluar: Actualizar los sistemas de evaluación de estudiantes y docentes mediante mejores instrumentos, mayor retroalimentación y enfoques formativos que mejoren el aprendizaje.",
+    "Internacionalización Académica Real: Promover la internacionalización a través de clases espejo, proyectos virtuales con universidades extranjeras y seminarios internacionales accesibles para más estudiantes.",
+    "Exaltación de Habilidades por Facultades: Implementar un sistema institucional que reconozca la innovación, la investigación y el impacto social de los proyectos estudiantiles, promoviendo la cultura de excelencia académica.",
+    "Potenciando la Forma de Conectarnos: Crear nuevos espacios de comunicación y retroalimentación entre estudiantes y autoridades académicas, incluyendo escenarios presenciales y virtuales.",
+    "Validar Experticia en los Últimos Semestres: Permitir que experiencias laborales o prácticas en los últimos semestres puedan ser validadas académicamente con la supervisión de un docente tutor.",
+    "Talentos: Una Nueva Ruta: Crear un programa para estudiantes destacados que les permita adelantar materias, participar en investigación, ser monitores y cursar asignaturas de posgrado."
   ],
-  "governmentPlan": "Eje 1 · Participación: mesas de diálogo por programa y rendición de cuentas periódica.\nEje 2 · Calidad: propuestas para actualización curricular, evaluación justa y apoyo a prácticas.\nEje 3 · Bienestar: acciones concretas en salud mental, permanencia y apoyo socioeconómico.\nEje 4 · Innovación: digitalización de trámites académicos y mejor comunicación institucional.\nEje 5 · Seguimiento: indicadores trimestrales para medir cumplimiento del plan de gobierno."
+  "governmentPlan": "Este plan de gobierno académico busca consolidar una universidad más preventiva, innovadora y participativa, capaz de responder a los desafíos actuales de la educación superior. A través de estas estrategias se pretende fortalecer la calidad educativa, mejorar la permanencia estudiantil y promover una cultura académica basada en la excelencia, la investigación y la colaboración."
 }
